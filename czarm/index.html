@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Czarm's Roulette Wheel of Happiness</title>
     <style>
-
         body {
             display: flex;
             flex-direction: column;
@@ -31,7 +31,9 @@
             margin-bottom: 20px;
         }
 
-        #spin, #hide-button, #show-button {
+        #spin,
+        #hide-button,
+        #show-button {
             background-color: rgba(128, 0, 128, 0.5);
             color: white;
             border: none;
@@ -40,7 +42,9 @@
             border-radius: 5px;
         }
 
-        #spin:hover, #hide-button:hover, #show-button:hover {
+        #spin:hover,
+        #hide-button:hover,
+        #show-button:hover {
             background-color: rgba(128, 0, 128, 0.7);
         }
 
@@ -68,8 +72,13 @@
         }
 
         @keyframes modalopen {
-            from { opacity: 0 }
-            to { opacity: 1 }
+            from {
+                opacity: 0
+            }
+
+            to {
+                opacity: 1
+            }
         }
 
         .close {
@@ -107,19 +116,25 @@
             margin: 0;
             padding: 10px;
         }
+
         @media (max-width: 768px) {
             .modal-content {
-                width: 90%; /* Adjust the width for smaller screens */
+                width: 90%;
+                /* Adjust the width for smaller screens */
                 margin: 15% auto;
             }
         }
     </style>
 </head>
+
 <body>
     <h2>Czarm's Wheel of Happiness - September 5, 2023</h2>
 
     <div id="text-container">
-        <p>Ginawa ko to kasi i wanna be there for you as much as possible even through ganito lang na you'll always know na you are special to me even if i'm busy or sleeping or doing something na di makakareply agad <br><b>Spin the wheel for a surprise hehehe I love you so much czarm<3</b></p>
+        <p>Ginawa ko to kasi i wanna be there for you as much as possible even through ganito lang na you'll always know
+            na you are special to me even if i'm busy or sleeping or doing something na di makakareply agad <br><b>Spin
+                the wheel for a surprise hehehe I love you so much czarm<3< /b>
+        </p>
         <button id="hide-button">Hide Text</button>
     </div>
 
@@ -138,7 +153,7 @@
             </div>
         </div>
     </div>
-    
+
     <script>
         var options = [
             { text: "masayang masaya ako dito HAHAHHAHA i'll treasure this memory of us forever lalo na nung nandun tayooo sa may daan naguusap", image: "IMG_20230826_193431.jpg" },
@@ -180,7 +195,7 @@
             { text: "i love you mahal even in your with your flaws", image: "" },
             { text: "", image: "IMG_20230828_034732.jpg" },
             { text: "Hugggggggg", image: "IMG_20230828_034546.jpg" },
-            { text: "i will always respect your time and your busy days mahal", image: "355209082_806975727398824_3787614844637048095_n.jpg" },
+            { text: "i will always respect your time and your busy days mahal", image: "355209082_806975727398824_3787614844637048095_n.png" },
             { text: "I will always cherish you mahal", image: "" },
             { text: "My heart is yours forever mahal", image: "" },
             { text: "you are may tahanan mahal i love you", image: "" },
@@ -211,11 +226,11 @@
             { text: "mahal you are the best duo ever hehehe mapa valo ml or wildrift", image: "" },
             { text: "#Roadto12hours", image: "" },
             { text: "i am always thinking about you mahal", image: "" },
-            { text: "i wish na naging kinder yung mundong ito sayo na di ka nya binigyan ng mga traumas hehehe maybe that's why i'm here to bring you happiness to make up for all those traumas that you have endured in the past mahal i love you and i promise to be the man that deserves you", image: ""},
-            {text: "Mahal i will always look back at this moment nung bagong kilala palang tayo na i can say na you were there for me since day one kahit na wala pa akong maooffer sayo nun you still choose to love me and for that i am eternally grateful you are a major part of my success in life and i hope na will be part of yours aswell i love you so much mahal words are not enough to express this feeling i have for you <br> ps don't worry mahal okieee lang kung di tuloy ayala mall there is always next time <br> 9-9-2023"}
-           
-           
-  
+            { text: "i wish na naging kinder yung mundong ito sayo na di ka nya binigyan ng mga traumas hehehe maybe that's why i'm here to bring you happiness to make up for all those traumas that you have endured in the past mahal i love you and i promise to be the man that deserves you", image: "" },
+            { text: "Mahal i will always look back at this moment nung bagong kilala palang tayo na i can say na you were there for me since day one kahit na wala pa akong maooffer sayo nun you still choose to love me and for that i am eternally grateful you are a major part of my success in life and i hope na will be part of yours aswell i love you so much mahal words are not enough to express this feeling i have for you <br> ps don't worry mahal okieee lang kung di tuloy ayala mall there is always next time <br> 9-9-2023" }
+
+
+
         ];
         var startAngle = 0;
         var arc = Math.PI / (options.length / 2);
@@ -225,6 +240,8 @@
         var spinTimeTotal = 0;
         var ctx;
         var currentVisibleOption = null;
+        var selectedOptions = [];
+
 
         document.getElementById("spin").addEventListener("click", spin);
 
@@ -266,14 +283,17 @@
                 ctx.font = 'bold 12px Helvetica, Arial';
 
                 for (var i = 0; i < options.length; i++) {
-                    var angle = startAngle + i * arc;
-                    ctx.fillStyle = getColor(i, options.length);
+                    // Check if the option has already been selected
+                    if (selectedOptions.indexOf(options[i]) === -1) {
+                        var angle = startAngle + i * arc;
+                        ctx.fillStyle = getColor(i, options.length);
 
-                    ctx.beginPath();
-                    ctx.arc(250, 250, outsideRadius, angle, angle + arc, false);
-                    ctx.arc(250, 250, insideRadius, angle + arc, angle, true);
-                    ctx.stroke();
-                    ctx.fill();
+                        ctx.beginPath();
+                        ctx.arc(250, 250, outsideRadius, angle, angle + arc, false);
+                        ctx.arc(250, 250, insideRadius, angle + arc, angle, true);
+                        ctx.stroke();
+                        ctx.fill();
+                    }
                 }
 
                 // Arrow
@@ -290,6 +310,7 @@
                 ctx.fill();
             }
         }
+
 
         function spin() {
             if (currentVisibleOption) {
@@ -337,14 +358,14 @@
             var modal = document.getElementById("myModal");
             var modalContent = document.getElementById("modal-content-container");
             modal.style.display = "block";
-
+            selectedOptions.push(selectedOption);
             // Clear previous content
             modalContent.innerHTML = "";
 
             // Create and append the content to the modal
             var optionElement = document.createElement("div");
             var textElement = document.createElement("p");
-            
+
             if (selectedOption.image) {
                 // If the option has an image, display it
                 var imageElement = document.createElement("img");
@@ -355,7 +376,7 @@
                 // If there's no image, display only the text
                 textElement.textContent = selectedOption.text;
             }
-            
+
             optionElement.appendChild(textElement);
             modalContent.appendChild(optionElement);
 
@@ -381,7 +402,7 @@
         document.getElementById("hide-button").addEventListener("click", function () {
             var textContainer = document.getElementById("text-container");
             textContainer.style.display = "none";
-});
+        });
         document.getElementById("show-button").addEventListener("click", function () {
             var textContainer = document.getElementById("text-container");
             textContainer.style.display = "block";
@@ -389,4 +410,5 @@
 
     </script>
 </body>
+
 </html>
